@@ -1,0 +1,107 @@
+Current configuration : 1277 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname MAT1
+!
+!
+!
+enable secret curso
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip host RouterA 192.168.187.1 
+ip host RouterB 192.168.187.33 
+ip host RouterC 192.168.187.65 
+ip host RouterD 192.168.187.97 
+ip host RouterE 192.168.187.129 
+ip host RouterMat2 192.168.187.225 
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ description GigabitEthernetRouterMat1
+ ip address 192.168.187.161 255.255.255.224
+ duplex auto
+ speed auto
+ No Shutdown
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface GigabitEthernet0/0/2
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Serial0/2/0
+ description CONEXION ROUTER1 A ROUTERE
+ ip address 192.168.187.209 255.255.255.252
+ clock rate 56000
+ No Shutdown
+!
+interface Serial0/2/1
+ description CONEXION ROUTER2 A ROUTER1
+ ip address 192.168.187.214 255.255.255.252
+ No Shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router rip
+ version 2
+ network 192.168.187.0
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ password 7 080C4D5A
+ login
+!
+line aux 0
+!
+line vty 0 4
+ password 7 080C4D5A
+ login
+!
+!
+!
+end
